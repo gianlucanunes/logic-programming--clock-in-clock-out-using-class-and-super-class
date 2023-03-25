@@ -1,81 +1,98 @@
-﻿Console.WriteLine("------ CONTROLE DE PONTO ------\n\nPreencha as informações abaixo:");
-Funcionario fun = new Funcionario();
-ControlePonto c = new ControlePonto();
+﻿/*
+ * 
+ *      EN: Logic Programming Exercise: Clock Control.
+ *      PT-BR: Exercício de Lógica de Programação: Controle de Ponto.
+ *      
+ *      Created by / Feito por: Gianluca Nunes
+ *
+ */
 
-Console.Write("\nNome: ");
-fun.nome = Console.ReadLine();
+Console.WriteLine("------ Clock Control ------\n");
 
 
-_codFun:
-Console.Write("\nCódigo de identificação do funcionário: ");
-int idFun;
-if (int.TryParse(Console.ReadLine(), out idFun))
+// Creating the Employee object
+Employee emp = new Employee();
+// Creating the clock object
+ClockControl c = new ClockControl();
+
+
+// Asking the user for the employee info
+Console.WriteLine("Please, fill the form bellow:");
+
+Console.Write("\nEmployee Name: ");
+emp.Name = Console.ReadLine();
+
+// Validating the Employee Id
+_empCode:
+Console.Write("\nEmployee ID: ");
+int code;
+if (int.TryParse(Console.ReadLine(), out code))
 {
-    fun.codigo = idFun;
+    emp.Code = code;
 }
 else
 {
-    Console.WriteLine("\nValor inválido! Tente novamente!\n");
-    goto _codFun;
+    Console.WriteLine("\nIncorrect Input! Please, try it again.");
+    goto _empCode;
 }
 
+Console.Write("\nDepartment Name: ");
+emp.NameDepartment = Console.ReadLine();
 
-Console.Write("\nNome do setor: ");
-fun.NomeSetor = Console.ReadLine();
-
-
-_idSet:
-Console.Write("\nID do setor: ");
+// Validating the Department Id
+_depId:
+Console.Write("\nDepartment ID: ");
 int id;
 if (int.TryParse(Console.ReadLine(), out id))
 {
-    fun.IdSetor = id;
+    emp.IdDepartment = id;
 }
 else
 {
-    Console.WriteLine("\nValor inválido! Tente novamente!\n");
-    goto _idSet;
+    Console.WriteLine("\nIncorrect Input! Please, try it again.");
+    goto _depId;
 }
 
+Console.Write("\nEmployee Function: ");
+emp.Function = Console.ReadLine();
 
-Console.Write("\nCargo: ");
-fun.cargo = Console.ReadLine();
+// Asking the user if he wants to Clock In
+string opt;
+_clockIn:
+Console.WriteLine("\nDo you want to Clock In?\n[Y] Yes\n[N] No\n");
+opt = Console.ReadLine().ToUpper();
 
-string opc;
-
-_regE:
-Console.WriteLine("\nDeseja registrar a ENTRADA?\n[S] Sim\n[N] Não\n");
-opc = Console.ReadLine().ToUpper();
-
-switch (opc)
+switch (opt)
 {
-    case "S":
-        c.RegistrarEntrada(fun);
+    case "Y":
+        c.ClockIn(emp);
         break;
     case "N":
-        goto _fim;
+        goto _end;
+    // Validating the user input
     default:
-        Console.WriteLine("\nErro: opção inválida! Tente novamente!\n");
-        goto _regE;
+        Console.WriteLine("\nIncorrect option! Please, try it again.");
+        goto _clockIn;
 }
 
-_regS:
-Console.WriteLine("\nDeseja registrar a SAÍDA?\n[S] Sim\n[N] Não\n");
-opc = Console.ReadLine().ToUpper();
+// Asking the user if he wants to Clock Out
+_clockOut:
+Console.WriteLine("\nDo you want to Clock Out?\n[Y] Yes\n[N] No\n");
+opt = Console.ReadLine().ToUpper();
 
-switch (opc)
+switch (opt)
 {
-    case "S":
-        c.RegistrarSaida(fun);
+    case "Y":
+        c.ClockOut(emp);
         break;
     case "N":
-        goto _fim;
+        goto _end;
+    // Validating the user input
     default:
-        Console.WriteLine("\nErro: opção inválida! Tente novamente!\n");
-        goto _regS;
+        Console.WriteLine("\nIncorrect option! Please, try it again.");
+        goto _clockOut;
 }
 
-
-_fim:
-Console.WriteLine("\nTecle espaço para continuar...");
+_end:
+Console.WriteLine("\nPress space to close the program...");
 Console.ReadKey();

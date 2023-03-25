@@ -31,4 +31,3 @@ public class ClockControl
             $"\nFunction: {e.Function}");
     }
 }
-

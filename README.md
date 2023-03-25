@@ -7,6 +7,7 @@ Hi! This is a logic programming exercise where I've used the class concept and t
 I've utilized:
 - Classes
 - Super Class
+- Inheritance
 - Methods
 - Current Sytem Date Time
 - Validation
@@ -17,6 +18,7 @@ Olá! Esse é um exercício de lógica de programação em que eu utilizei o con
 Eu utilizei:
 - Classes
 - Super Classe
+- Herança
 - Métodos
 - Data e Hora Atual do Sistema
 - Validação

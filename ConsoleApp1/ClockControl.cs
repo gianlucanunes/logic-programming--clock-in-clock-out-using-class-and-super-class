@@ -1,7 +1,10 @@
-﻿public class ClockControl
+﻿// Creating the puclic class ClockControl
+public class ClockControl
 {
+    // Creating a Void method to do the Clock In
     public void ClockIn(Employee e)
     {
+        // Getting the system current date and time
         DateTime Date = DateTime.Now;
 
         Console.WriteLine($"\n--=-- Clock In --=--" +
@@ -13,8 +16,10 @@
             $"\nFunction: {e.Function}");
     }
 
+    // Creating a Void method to do the Clock Out
     public void ClockOut(Employee e)
     {
+        // Getting the system current date and time
         DateTime Date = DateTime.Now;
 
         Console.WriteLine($"\n--=-- Clock Out --=--" +
